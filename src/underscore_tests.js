@@ -51,17 +51,16 @@ var _ = { };
   // Call iterator(value, key, collection) for each element of collection.
   // Accepts both arrays and objects.
   _.each = function(collection, iterator) {
-    var key = 0;
-    var value = collection[key];
-    if (typeof collection === 'array'){
-      return collection.filter(function(value, key, collection) {
-        return console.log("This is the value: " + value + " This is the key: " + key + " This is the collection: "+ collection);    
-      });
-    }
-    else if (typeof collection === 'object'){
-      
-    }
-    return "The passed collection is neither an array, nor an object.";
+    var collectionType = typeof collection;
+    if (collectionType === 'object'){
+      for (var key in collection) {
+        if (collection.hasOwnProperty(key)) {
+          key + " -> " + collection[key];
+  }
+} 
+}
+    else
+      return "The passed collection is neither an array, nor an object. It is a: " + collectionType;
   };
 
   // Returns the index at which value can be found in the array, or -1 if value
